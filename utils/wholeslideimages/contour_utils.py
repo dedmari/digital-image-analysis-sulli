@@ -366,13 +366,14 @@ def get_and_save_tumor_patch_samples_for_tumor_images(mask_image,  # rgb image o
     try :
         wsi_name = wsi_path.split('/')[-1].split('.')[0]
         print("Processing Image id : ", wsi_name)
-
+        print("Before calling get_and_save_patch_samples_from_mask_and_wsi_image()")
         get_and_save_patch_samples_from_mask_and_wsi_image(mask_image=mask_image,
                                                        mask_image_resolution_level=mask_image_resolution_level,
                                                        wsi_path=wsi_path,
                                                        wsi_mask_path=wsi_mask_path,
                                                        patch_resolution_level=patch_resolution_level,
                                                        is_tumor_image=True)
+        print("After calling get_and_save_patch_samples_from_mask_and_wsi_image()")
     except Exception as e:
         return False
 
