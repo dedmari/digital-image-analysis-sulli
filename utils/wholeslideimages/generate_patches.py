@@ -174,7 +174,7 @@ def single_threaded_generate_tumor_patches_from_tumor_images():
 
     """
     for tumor_wsi_path, wsi_mask_path in tumor_image_mask_pairs:
-        print("tumor_wsi_path", tumor_image_mask_pairs)
+        print("tumor_wsi_path", tumor_wsi_path)
         print("wsi_mask_path", wsi_mask_path)
         wsi_mask = wsi_file_utils.read_wsi_normal(wsi_normal_path=wsi_mask_path,
                                                   resolution_level=mask_image_resolution_level)
