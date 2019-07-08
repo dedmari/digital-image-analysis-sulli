@@ -181,7 +181,10 @@ def get_saturation_thresholded_mask_from_tumor_wsi(tumor_wsi, wsi_mask):
     # Bitwise AND of original wsi and it's inverted mask
     #print tumor_wsi_array.shape[:2]
     wsi_mask_grayscale_inv_resized = cv2.resize(wsi_mask_grayscale_inv, (tumor_wsi_array.shape[1], tumor_wsi_array.shape[0]))
-    print "\n wsi_mask_grayscale_inv_resized : ", wsi_mask_grayscale_inv_resized.shape, " tumor_wsi : ", tumor_wsi_array.shape, " Sizes match ? = ", (wsi_mask_grayscale_inv_resized.shape[0] == tumor_wsi_array.shape[0] and wsi_mask_grayscale_inv_resized.shape[1] == tumor_wsi_array.shape[1])
+    print("\n wsi_mask_grayscale_inv_resized : ",
+          wsi_mask_grayscale_inv_resized.shape, " tumor_wsi : ",
+          tumor_wsi_array.shape, " Sizes match ? = ",
+          (wsi_mask_grayscale_inv_resized.shape[0] == tumor_wsi_array.shape[0] and wsi_mask_grayscale_inv_resized.shape[1] == tumor_wsi_array.shape[1]))
     tumor_wsi_excluding_tumor_area = cv2.bitwise_and(tumor_wsi_array, tumor_wsi_array, mask=wsi_mask_grayscale_inv_resized)
     #Image.fromarray(tumor_wsi_excluding_tumor_area).show()
 
@@ -342,7 +345,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
 
     wsi_image_original.close()
 
-    print " samples_accepted : {0}, \t\t samples_rejected : {1}, \t\t bbox_samples_used : {2}".format(samples_accepted, samples_rejected, count)
+    print(" samples_accepted : {0}, \t\t samples_rejected : {1}, \t\t bbox_samples_used : {2}".format(samples_accepted, samples_rejected, count))
     if is_tumor_image:
         wsi_mask_original.close()
     return True
@@ -357,7 +360,7 @@ def get_and_save_tumor_patch_samples_for_tumor_images(mask_image,  # rgb image o
 
     try :
         wsi_name = wsi_path.split('/')[-1].split('.')[0]
-        print "Processing Image id : ", wsi_name
+        print("Processing Image id : ", wsi_name)
 
         get_and_save_patch_samples_from_mask_and_wsi_image(mask_image=mask_image,
                                                        mask_image_resolution_level=mask_image_resolution_level,
@@ -386,9 +389,9 @@ def get_and_save_normal_patch_samples_from_both_images(mask_image_resolution_lev
     wsi_name = wsi_path.split('/')[-1].split('.')[0]
     if wsi_mask_path is not None:
         wsi_mask_path_name = wsi_mask_path.split('/')[-1].split('.')[0]
-        print "\n Processing Image id : ", wsi_name, " And Image Mask id : ", wsi_mask_path_name
+        print("\n Processing Image id : ", wsi_name, " And Image Mask id : ", wsi_mask_path_name)
     else:
-        print "\n Processing Image id : ", wsi_name
+        print("\n Processing Image id : ", wsi_name)
 
     wsi_image_original = wsi_file_utils.get_wsi_openslide_object(wsi_path=wsi_path)
 
@@ -410,7 +413,7 @@ def get_and_save_normal_patch_samples_from_both_images(mask_image_resolution_lev
                                                        patch_resolution_level=patch_resolution_level,
                                                        is_tumor_image=False) # This must be always because we are extracting positive samples
     except Exception as e:
-        print e
+        print(e)
         return False
 
     return True
