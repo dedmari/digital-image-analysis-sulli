@@ -42,7 +42,8 @@ def get_external_contours_from_grayscale_image(grayscale_image):
     # TODO:Remove code patch aftre debugging
 
     # There is a issue with cv2.findContours api. It stops the progrm flow here only.
-    image, contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    #image, contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     #contours = grayscale_image
 
 
