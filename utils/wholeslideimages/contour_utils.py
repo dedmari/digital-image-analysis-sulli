@@ -37,14 +37,9 @@ def get_grayscale_image_from_rgb(rgb_image):
 # simple chain approximation retrieved
 def get_external_contours_from_grayscale_image(grayscale_image):
     print("inside get_external_contours_from_grayscale_image")
-    # Code section for debugging
-    cv2.imwrite('mask_gray_scale_before_find_contours.png', grayscale_image)
-    # TODO:Remove code patch aftre debugging
 
     # There is a issue with cv2.findContours api. It stops the progrm flow here only.
     image, contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    #contours = grayscale_image
-
 
     print("after caling cv2 findContours")
     return contours
