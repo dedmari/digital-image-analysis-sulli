@@ -23,7 +23,7 @@ normal_wsi_paths.sort()
 mask_image_resolution_level=5
 resolution_level = 5
 #from Queue import Queue
-from queue import *
+from Queue import *
 import time
 from threading import Thread
 
