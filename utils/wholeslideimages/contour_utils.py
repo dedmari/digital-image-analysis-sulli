@@ -36,8 +36,9 @@ def get_grayscale_image_from_rgb(rgb_image):
 # get external contours from a gray scale image
 # simple chain approximation retrieved
 def get_external_contours_from_grayscale_image(grayscale_image):
-
+    print("inside get_external_contours_from_grayscale_image")
     image, contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    print("after caling cv2 findContours")
     return contours
 
 # get a list of bounding boxes which encloses
@@ -50,9 +51,7 @@ def get_bbox_from_contours(contours):
 # get a list of bounding boxes which encloses
 # all the contours in a RGB image
 def get_bbox_from_mask_image(mask_image):
-    print("inside get_bbox_from_mask_image")
     grayscale_image = get_grayscale_image_from_rgb(mask_image)
-    print("after computing grayscale image")
     contours = get_external_contours_from_grayscale_image(grayscale_image)
     print("after getting contour")
     bounding_boxes = get_bbox_from_contours(contours)
