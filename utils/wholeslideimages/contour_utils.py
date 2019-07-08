@@ -242,6 +242,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                                               patch_resolution_level=None, # resolution level for patch extraction
                                               is_tumor_image=True):
     wsi_name = wsi_path.split('/')[-1].split('.')[0]
+    print("inside get_and_save_patch_samples_from_mask_and_wsi_image")
     # print "Processing Image id : ", wsi_name
     #patch_starting_points = get_random_samples_of_patch_starting_points(mask_image)
     # MODIFICATION
