@@ -83,8 +83,8 @@ def get_samples_of_patch_starting_points_with_stride_10(mask_image):
     for x, y, w, h in bounding_boxes:
         #print x, y, w, h
         #print " x, y, w, h : {0}, {1}, {2}, {3}".format(x, y, w, h)
-        X = xrange(x, x+w, 10) #np.arange(x, x+w)
-        Y = xrange(y, y+h, 10) #np.arange(y, y+h)
+        X = range(x, x+w, 10) #np.arange(x, x+w)
+        Y = range(y, y+h, 10) #np.arange(y, y+h)
 
         for row_starting_point in X:
             for col_starting_point in Y:
@@ -100,8 +100,8 @@ def get_samples_of_patch_starting_points_with_stride_2(mask_image):
     for x, y, w, h in bounding_boxes:
         #print x, y, w, h
         #print " x, y, w, h : {0}, {1}, {2}, {3}".format(x, y, w, h)
-        X = xrange(x, x+w, 2) #np.arange(x, x+w)
-        Y = xrange(y, y+h, 2) #np.arange(y, y+h)
+        X = range(x, x+w, 2) #np.arange(x, x+w)
+        Y = range(y, y+h, 2) #np.arange(y, y+h)
 
         for row_starting_point in X:
             for col_starting_point in Y:
@@ -246,15 +246,15 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
     #patch_starting_points = get_random_samples_of_patch_starting_points(mask_image)
     # MODIFICATION
     if is_tumor_image:
-        print("inside first if of get and save patch samples")
+        #print("inside first if of get and save patch samples")
         patch_starting_points = get_samples_of_patch_starting_points_with_stride_2(mask_image)
-        print("inside end of first if of get and save patch samples")
+        #print("inside end of first if of get and save patch samples")
     else:
-        print("inside first else of get and save patch samples")
+        #print("inside first else of get and save patch samples")
         patch_starting_points = get_samples_of_patch_starting_points_with_stride_10(mask_image)
-        print("inside end of first else of get and save patch samples")
+        #print("inside end of first else of get and save patch samples")
 
-    print("patch_starting_points computed")
+    #print("patch_starting_points computed")
     if patch_resolution_level is None:
         patch_resolution_level = 0
     #print "patch_resolution_level : {}".format(patch_resolution_level)
@@ -265,7 +265,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
     wsi_mask_original = None
 
     if is_tumor_image:
-        print("inside is_tumor_image")
+        #print("inside is_tumor_image")
         wsi_mask_original = wsi_file_utils.get_wsi_openslide_object(wsi_path=wsi_mask_path)
 
     count = 0
