@@ -95,11 +95,13 @@ def get_samples_of_patch_starting_points_with_stride_10(mask_image):
 # for tumor samples
 def get_samples_of_patch_starting_points_with_stride_2(mask_image):
 
+    print("inside get_samples_of_patch_starting_points_with_stride_2")
     bounding_boxes = get_bbox_from_mask_image(mask_image)
     list_starting_points = []
+    print("before for loop")
     for x, y, w, h in bounding_boxes:
         #print x, y, w, h
-        #print " x, y, w, h : {0}, {1}, {2}, {3}".format(x, y, w, h)
+        print(" x, y, w, h : {0}, {1}, {2}, {3}".format(x, y, w, h))
         X = range(x, x+w, 2) #np.arange(x, x+w)
         Y = range(y, y+h, 2) #np.arange(y, y+h)
 
@@ -107,7 +109,7 @@ def get_samples_of_patch_starting_points_with_stride_2(mask_image):
             for col_starting_point in Y:
                 # append in the list
                 list_starting_points.append((row_starting_point, col_starting_point))
-
+    print("before returning from function")
     return list_starting_points
 
 # for evaluation/postprocessing
