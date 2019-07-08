@@ -305,10 +305,13 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
 
                 tumor_id = wsi_path.split('_')[-1].split('.')[0]
                 filepath = dir_for_saving_tumor_patches+str(wsi_name)+"_"+str(samples_accepted)+".PNG"
+                print("saving patches at: "+filepath)
+
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
                 samples_accepted += 1
             else:
+                print("inside samples rejected condition")
                 samples_rejected += 1
 
             #patch_read_from_mask_at_zero_level.close()
