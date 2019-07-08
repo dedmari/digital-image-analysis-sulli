@@ -1,4 +1,5 @@
-
+import sys
+sys.path.append(".")
 import glob
 import cv2, os
 import numpy as np
