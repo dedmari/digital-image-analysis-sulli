@@ -16,7 +16,7 @@ RAW_DATA_DIR_LIST = {
 }
 
 CAMELYON_DIR_LIST = {
-	"dgxadmin": "/mnt/ai/uni_warwick/camelyon16_dataset/training/",
+	"dgxadmin": "/raid/uni_warwick/camelyon16_dataset/training/",
 	"dgxadmin":	"/mnt/ai/uni_warwick/camelyon16_dataset/training/"
 }
 CAMELYON_DIR = CAMELYON_DIR_LIST[user]
