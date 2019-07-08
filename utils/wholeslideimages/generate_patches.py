@@ -167,13 +167,22 @@ def generate_tumor_patches_from_tumor_images():
     return True
 
 def single_threaded_generate_tumor_patches_from_tumor_images():
+    """
+    WARNING: Only for testing purpose. It should not be used for actual patch generation
+    It is used to test the bug while running creat patch using worker threads
+    :return:
+
+    """
     for tumor_wsi_path, wsi_mask_path in tumor_image_mask_pairs:
+        print("tumor_wsi_path", tumor_image_mask_pairs)
+        print("wsi_mask_path", wsi_mask_path)
         wsi_mask = wsi_file_utils.read_wsi_normal(wsi_normal_path=wsi_mask_path,
                                                   resolution_level=mask_image_resolution_level)
         wsi_contour_utils.get_and_save_tumor_patch_samples_for_tumor_images(mask_image=np.array(wsi_mask),
                                                                             mask_image_resolution_level=mask_image_resolution_level,
                                                                             wsi_path=tumor_wsi_path,
                                                                             wsi_mask_path=wsi_mask_path)
+        break;
 
 
 if __name__ == '__main__':
