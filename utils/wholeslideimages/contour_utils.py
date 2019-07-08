@@ -50,10 +50,13 @@ def get_bbox_from_contours(contours):
 # get a list of bounding boxes which encloses
 # all the contours in a RGB image
 def get_bbox_from_mask_image(mask_image):
-
+    print("inside get_bbox_from_mask_image")
     grayscale_image = get_grayscale_image_from_rgb(mask_image)
+    print("after computing grayscale image")
     contours = get_external_contours_from_grayscale_image(grayscale_image)
+    print("after getting contour")
     bounding_boxes = get_bbox_from_contours(contours)
+    print("after getting bounding box")
     return bounding_boxes
 
 # get random points within the bounding boxes (which encloses
