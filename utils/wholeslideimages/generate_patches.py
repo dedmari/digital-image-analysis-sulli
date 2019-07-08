@@ -166,6 +166,16 @@ def generate_tumor_patches_from_tumor_images():
         return False
     return True
 
+def single_threaded_generate_tumor_patches_from_tumor_images():
+    for tumor_wsi_path, wsi_mask_path in tumor_image_mask_pairs:
+        wsi_mask = wsi_file_utils.read_wsi_normal(wsi_normal_path=wsi_mask_path,
+                                                  resolution_level=mask_image_resolution_level)
+        wsi_contour_utils.get_and_save_tumor_patch_samples_for_tumor_images(mask_image=np.array(wsi_mask),
+                                                                            mask_image_resolution_level=mask_image_resolution_level,
+                                                                            wsi_path=tumor_wsi_path,
+                                                                            wsi_mask_path=wsi_mask_path)
+
+
 if __name__ == '__main__':
     # print("\n\n\n generate_normal_patches_from_normal_images ")
     # generate_normal_patches_from_normal_images()
@@ -174,5 +184,6 @@ if __name__ == '__main__':
     # generate_normal_patches_from_tumor_images()
     #
     print("\n\n\n generate_tumor_patches_from_tumor_images ")
-    generate_tumor_patches_from_tumor_images()
+    #generate_tumor_patches_from_tumor_images()
+    single_threaded_generate_tumor_patches_from_tumor_images()
     print(" Patches have been created once.")
