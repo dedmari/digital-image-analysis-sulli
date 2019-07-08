@@ -66,7 +66,7 @@ def generate_normal_patches_from_normal_images():
         queue.join()
         print('Took {}'.format(time.time() - ts))
     except Exception as e:
-        print e
+        print(e)
         return False
     return True
 
@@ -113,7 +113,7 @@ def generate_normal_patches_from_tumor_images():
         queue.join()
         print('Took {}'.format(time.time() - ts))
     except Exception as e:
-        print e
+        print(e)
         return False
     return True
 
@@ -142,8 +142,9 @@ def generate_tumor_patches_from_tumor_images():
         ts = time.time()
         # Create a queue to communicate with the worker threads
         queue = Queue()
-        # Create 4 worker threads
-        for x in range(4):
+        # Create worker threads
+        print("creating 60 workers")
+        for x in range(60):
             worker = Worker_to_generate_tumor_patches_from_tumor_images(queue)
             # Setting daemon to True will let the main thread exit even though the workers are blocking
             worker.daemon = True
@@ -160,7 +161,7 @@ def generate_tumor_patches_from_tumor_images():
         queue.join()
         print('Took {}'.format(time.time() - ts))
     except Exception as e:
-        print e
+        print(e)
         return False
     return True
 
@@ -173,4 +174,4 @@ if __name__ == '__main__':
     #
     print("\n\n\n generate_tumor_patches_from_tumor_images ")
     generate_tumor_patches_from_tumor_images()
-    print " Patches have been created once."
+    print(" Patches have been created once.")
