@@ -2,31 +2,28 @@
 
 import getpass
 
-users = ['anurag', 
-		 'anuragverma']
+users = ['dgxadmin',
+		 'dgxadmin']
 
 user = getpass.getuser()
 print('user: %s' % user)
 
-# = {
-# 	"anurag": "",
-# 	"anuragverma":	""
-# }
+
 
 RAW_DATA_DIR_LIST = {
-	"anurag": "",
-	"anuragverma":	""
+	"dgxadmin": "",
+	"dgxadmin":	""
 }
 
 CAMELYON_DIR_LIST = {
-	"anurag": "/mnt/newhd/camelyon/",
-	"anuragverma":	"/Users/anuragverma/Desktop/camelyon/"
+	"dgxadmin": "/mnt/ai/uni_warwick/camelyon16_dataset/training/",
+	"dgxadmin":	"/mnt/ai/uni_warwick/camelyon16_dataset/training/"
 }
 CAMELYON_DIR = CAMELYON_DIR_LIST[user]
 
-RAW_DATA_DIR = CAMELYON_DIR + "TrainingData/"
-RAW_TUMOR_DATA_DIR = RAW_DATA_DIR + "Train_Tumor/"
-RAW_NORMAL_DATA_DIR = RAW_DATA_DIR + "Train_Normal/"
+RAW_DATA_DIR = CAMELYON_DIR + "training/"
+RAW_TUMOR_DATA_DIR = RAW_DATA_DIR + "tumor/"
+RAW_NORMAL_DATA_DIR = RAW_DATA_DIR + "normal/"
 RAW_TUMOR_MASK_DIR = CAMELYON_DIR + "Ground_Truth_Extracted/Mask/"
 
 PREPROCESSING_DATA_DIR = CAMELYON_DIR + "PreProcessing/"
@@ -80,7 +77,7 @@ LOGS_DIR = CAMELYON_DIR + "logs/"
 TRAIN_LOGS_DIR = LOGS_DIR +  "retrain_logs_dr_8_epoc" #"train_logs_dr_30_epoc"
 EVAL_LOGS_DIR = LOGS_DIR + "eval_dir/"
 
-HOME = "/Users/pallavgarg/Documents/freelancing/digital-image-analysis-sulli/utils/wholeslideimages/"
+HOME = "/mnt/ai/uni_warwick/repos/digital-image-analysis-sulli/utils/wholeslideimages/"
 DATA_DIR = HOME + "data/"
 LYMPH_DATA_DIR = DATA_DIR + "lymph/"
 MNIST_DATA_DIR = DATA_DIR + "mnist/"
