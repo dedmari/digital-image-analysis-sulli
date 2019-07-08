@@ -250,7 +250,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
     else:
         patch_starting_points = get_samples_of_patch_starting_points_with_stride_10(mask_image)
 
-    #print "patch_starting_points computed"
+    print("patch_starting_points computed")
     if patch_resolution_level is None:
         patch_resolution_level = 0
     #print "patch_resolution_level : {}".format(patch_resolution_level)
@@ -261,6 +261,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
     wsi_mask_original = None
 
     if is_tumor_image:
+        print("inside is_tumor_image")
         wsi_mask_original = wsi_file_utils.get_wsi_openslide_object(wsi_path=wsi_mask_path)
 
     count = 0
@@ -270,6 +271,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
     for x,y in patch_starting_points:
 
         if samples_accepted >= wsi_props.PATCH_MINIMUM_NO_OF_SAMPLES_OF_BBOX:
+            print("Crap!!! Inside break")
             break
 
         count += 1
