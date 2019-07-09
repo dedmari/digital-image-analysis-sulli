@@ -18,12 +18,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import sys
+sys.path.append(".")
+
 import tensorflow as tf
 
-from datasets import dataset_factory
-from deployment import model_deploy
-from nets import nets_factory
-from preprocessing import preprocessing_factory
+from slim.datasets import dataset_factory
+from slim.deployment import model_deploy
+from slim.nets import nets_factory
+from slim.preprocessing import preprocessing_factory
 
 from properties import wsi_props, training_params, disk_storage
 
