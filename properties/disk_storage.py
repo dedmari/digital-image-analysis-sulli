@@ -12,12 +12,12 @@ print('user: %s' % user)
 
 RAW_DATA_DIR_LIST = {
 	"dgxadmin": "",
-	"dgxadmin":	""
+	"dgxadmin2":	""
 }
 
 CAMELYON_DIR_LIST = {
 	"dgxadmin": "/raid/uni_warwick/camelyon16_dataset/training/",
-	"dgxadmin":	"/mnt/ai/uni_warwick/camelyon16_dataset/training/"
+	"dgxadmin2":	"/mnt/ai/uni_warwick/camelyon16_dataset/training/"
 }
 CAMELYON_DIR = CAMELYON_DIR_LIST[user]
 

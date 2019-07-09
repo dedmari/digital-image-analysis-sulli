@@ -48,6 +48,8 @@ class Worker_to_generate_normal_patches_from_normal_images(Thread):
 def generate_normal_patches_from_normal_images():
     try:
         ts = time.time()
+        print("normal wsi path: ", disk_storage_props.RAW_NORMAL_DATA_DIR)
+        print("total normal wsi slides: ", len(normal_wsi_paths))
         # Create a queue to communicate with the worker threads
         queue = Queue()
         # Create 4 worker threads
@@ -58,6 +60,7 @@ def generate_normal_patches_from_normal_images():
             worker.start()
         # Put the tasks into the queue as a tuple
         for normal_wsi_path in normal_wsi_paths:
+            print()
             queue.put((mask_image_resolution_level, normal_wsi_path))
             # wsi_contour_utils.get_and_save_normal_patch_samples_from_both_images(mask_image_resolution_level=mask_image_resolution_level,
             #                                                                      wsi_path=normal_wsi_path,
