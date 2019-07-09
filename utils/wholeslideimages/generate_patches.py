@@ -197,7 +197,7 @@ if __name__ == '__main__':
     #
     print("\n\n\n generate_tumor_patches_from_tumor_images ")
     #generate_tumor_patches_from_tumor_images()
-    for slide_num in range(3, 44):
+    for slide_num in range(4, 44):
         single_threaded_generate_tumor_patches_from_tumor_images(slide_num=slide_num)
 
     print(" Patches have been created once.")
