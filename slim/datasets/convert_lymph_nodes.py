@@ -37,7 +37,7 @@ import sys
 import platform
 import tensorflow as tf
 
-from datasets import dataset_utils
+from slim import datasets.dataset_utils
 from properties import disk_storage as disk_storage_props
 # The URL where the Flowers data can be downloaded.
 _DATA_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
