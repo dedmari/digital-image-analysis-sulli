@@ -147,20 +147,20 @@ def get_consecutive_samples_of_patch_starting_points_and_image_with_bbox_with_st
 
 def get_saturation_thresholded_mask_from_non_tumor_wsi(non_tumor_wsi):
 
-    print("inside get_saturation_thresholded_mask_from_non_tumor_wsi")
+    # print("inside get_saturation_thresholded_mask_from_non_tumor_wsi")
     rgb_image = np.array(non_tumor_wsi)
     hsv_image = cv2.cvtColor(rgb_image, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(hsv_image)
-    print("before cv2.median")
+    # print("before cv2.median")
     s2 = cv2.medianBlur(s, 25)
-    print("before cv2.threshold")
+    # print("before cv2.threshold")
     ret, saturation_thresholded_mask = cv2.threshold(s2, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    print("after cv2.threshold")
+    # print("after cv2.threshold")
     #print ret
     #ret2, saturation_thresholded_mask2 = cv2.threshold(saturation_thresholded_mask, 0, 255, cv2.THRESH_BINARY)
     #print ret2, type(saturation_thresholded_mask2)
     saturation_thresholded_mask_rgb = cv2.cvtColor(saturation_thresholded_mask, cv2.COLOR_GRAY2BGR)
-    print("after cv2.cvtColor")
+    # print("after cv2.cvtColor")
     return saturation_thresholded_mask_rgb
 
 def get_saturation_thresholded_mask_from_non_tumor_wsi_grayscale(non_tumor_wsi):
