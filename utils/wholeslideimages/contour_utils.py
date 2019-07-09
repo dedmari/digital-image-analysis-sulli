@@ -36,13 +36,13 @@ def get_grayscale_image_from_rgb(rgb_image):
 # get external contours from a gray scale image
 # simple chain approximation retrieved
 def get_external_contours_from_grayscale_image(grayscale_image):
-    print("inside get_external_contours_from_grayscale_image")
+    # print("inside get_external_contours_from_grayscale_image")
 
     contours, hierarchy = cv2.findContours(grayscale_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     #contours = grayscale_image
 
 
-    print("after caling cv2 findContours")
+    # print("after caling cv2 findContours")
     return contours
 
 # get a list of bounding boxes which encloses
@@ -57,9 +57,9 @@ def get_bbox_from_contours(contours):
 def get_bbox_from_mask_image(mask_image):
     grayscale_image = get_grayscale_image_from_rgb(mask_image)
     contours = get_external_contours_from_grayscale_image(grayscale_image)
-    print("after getting contour")
+    # print("after getting contour")
     bounding_boxes = get_bbox_from_contours(contours)
-    print("after getting bounding box")
+    # print("after getting bounding box")
     return bounding_boxes
 
 # get random points within the bounding boxes (which encloses
@@ -101,10 +101,10 @@ def get_samples_of_patch_starting_points_with_stride_10(mask_image):
 # for tumor samples
 def get_samples_of_patch_starting_points_with_stride_2(mask_image):
 
-    print("inside get_samples_of_patch_starting_points_with_stride_2")
+    # print("inside get_samples_of_patch_starting_points_with_stride_2")
     bounding_boxes = get_bbox_from_mask_image(mask_image)
     list_starting_points = []
-    print("before for loop")
+    # print("before for loop")
     for x, y, w, h in bounding_boxes:
         #print x, y, w, h
         print(" x, y, w, h : {0}, {1}, {2}, {3}".format(x, y, w, h))
@@ -115,7 +115,7 @@ def get_samples_of_patch_starting_points_with_stride_2(mask_image):
             for col_starting_point in Y:
                 # append in the list
                 list_starting_points.append((row_starting_point, col_starting_point))
-    print("before returning from function")
+    # print("before returning from function")
     return list_starting_points
 
 # for evaluation/postprocessing
@@ -329,7 +329,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                 patch_to_be_saved.close()
                 samples_accepted += 1
             else:
-                print("inside samples rejected condition")
+                #print("inside samples rejected condition")
                 samples_rejected += 1
 
             #patch_read_from_mask_at_zero_level.close()
@@ -382,14 +382,14 @@ def get_and_save_tumor_patch_samples_for_tumor_images(mask_image,  # rgb image o
     try :
         wsi_name = wsi_path.split('/')[-1].split('.')[0]
         print("Processing Image id : ", wsi_name)
-        print("Before calling get_and_save_patch_samples_from_mask_and_wsi_image()")
+        # print("Before calling get_and_save_patch_samples_from_mask_and_wsi_image()")
         get_and_save_patch_samples_from_mask_and_wsi_image(mask_image=mask_image,
                                                        mask_image_resolution_level=mask_image_resolution_level,
                                                        wsi_path=wsi_path,
                                                        wsi_mask_path=wsi_mask_path,
                                                        patch_resolution_level=patch_resolution_level,
                                                        is_tumor_image=True)
-        print("After calling get_and_save_patch_samples_from_mask_and_wsi_image()")
+        # print("After calling get_and_save_patch_samples_from_mask_and_wsi_image()")
     except Exception as e:
         return False
 

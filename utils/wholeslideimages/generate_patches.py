@@ -176,8 +176,8 @@ def single_threaded_generate_tumor_patches_from_tumor_images():
 
     """
     #for tumor_wsi_path, wsi_mask_path in tumor_image_mask_pairs:
-    tumor_wsi_path = '/mnt/ai/uni_warwick/camelyon16_dataset/training/training/tumor/tumor_001.tif'
-    wsi_mask_path='/mnt/ai/uni_warwick/camelyon16_dataset/training/Ground_Truth_Extracted/Mask/tumor_001.tif'
+    tumor_wsi_path = '/raid/uni_warwick/camelyon16_dataset/training/training/tumor/tumor_001.tif'
+    wsi_mask_path='/raid/uni_warwick/camelyon16_dataset/training/Ground_Truth_Extracted/Test_Mask/tumor_001.tif'
     print("tumor_wsi_path", tumor_wsi_path)
     print("wsi_mask_path", wsi_mask_path)
     wsi_mask = wsi_file_utils.read_wsi_normal(wsi_normal_path=wsi_mask_path,
@@ -189,14 +189,14 @@ def single_threaded_generate_tumor_patches_from_tumor_images():
 
 
 if __name__ == '__main__':
-    print("\n\n\n generate_normal_patches_from_normal_images ")
-    generate_normal_patches_from_normal_images()
+    #print("\n\n\n generate_normal_patches_from_normal_images ")
+    #generate_normal_patches_from_normal_images()
 
     # print("\n\n\n generate_normal_patches_from_tumor_images ")
     # generate_normal_patches_from_tumor_images()
     #
-    # print("\n\n\n generate_tumor_patches_from_tumor_images ")
-    #generate_tumor_patches_from_tumor_images()
+    print("\n\n\n generate_tumor_patches_from_tumor_images ")
+    generate_tumor_patches_from_tumor_images()
     #single_threaded_generate_tumor_patches_from_tumor_images()
 
     print(" Patches have been created once.")
