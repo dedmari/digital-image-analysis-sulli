@@ -168,7 +168,7 @@ def generate_tumor_patches_from_tumor_images():
         return False
     return True
 
-def single_threaded_generate_tumor_patches_from_tumor_images():
+def single_threaded_generate_tumor_patches_from_tumor_images(slide_num='001'):
     """
     WARNING: Only for testing purpose. It should not be used for actual patch generation
     It is used to test the bug while running create patch using worker threads
@@ -176,8 +176,8 @@ def single_threaded_generate_tumor_patches_from_tumor_images():
 
     """
     #for tumor_wsi_path, wsi_mask_path in tumor_image_mask_pairs:
-    tumor_wsi_path = '/raid/uni_warwick/camelyon16_dataset/training/training/tumor/tumor_001.tif'
-    wsi_mask_path='/raid/uni_warwick/camelyon16_dataset/training/Ground_Truth_Extracted/Test_Mask/tumor_001.tif'
+    tumor_wsi_path = '/raid/uni_warwick/camelyon16_dataset/training/training/tumor/tumor_'+slide_num+'.tif'
+    wsi_mask_path='/raid/uni_warwick/camelyon16_dataset/training/Ground_Truth_Extracted/Test_Mask/tumor_'+slide_num+'.tif'
     print("tumor_wsi_path", tumor_wsi_path)
     print("wsi_mask_path", wsi_mask_path)
     wsi_mask = wsi_file_utils.read_wsi_normal(wsi_normal_path=wsi_mask_path,
@@ -196,7 +196,7 @@ if __name__ == '__main__':
     # generate_normal_patches_from_tumor_images()
     #
     print("\n\n\n generate_tumor_patches_from_tumor_images ")
-    generate_tumor_patches_from_tumor_images()
-    #single_threaded_generate_tumor_patches_from_tumor_images()
+    #generate_tumor_patches_from_tumor_images()
+    single_threaded_generate_tumor_patches_from_tumor_images(slide_num='001')
 
     print(" Patches have been created once.")
