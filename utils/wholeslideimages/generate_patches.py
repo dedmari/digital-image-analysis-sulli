@@ -51,7 +51,7 @@ def generate_normal_patches_from_normal_images():
         # Create a queue to communicate with the worker threads
         queue = Queue()
         # Create 4 worker threads
-        for x in range(4):
+        for x in range(40):
             worker = Worker_to_generate_normal_patches_from_normal_images(queue)
             # Setting daemon to True will let the main thread exit even though the workers are blocking
             worker.daemon = True
@@ -187,13 +187,14 @@ def single_threaded_generate_tumor_patches_from_tumor_images():
 
 
 if __name__ == '__main__':
-    # print("\n\n\n generate_normal_patches_from_normal_images ")
-    # generate_normal_patches_from_normal_images()
+    print("\n\n\n generate_normal_patches_from_normal_images ")
+    generate_normal_patches_from_normal_images()
 
     # print("\n\n\n generate_normal_patches_from_tumor_images ")
     # generate_normal_patches_from_tumor_images()
     #
-    print("\n\n\n generate_tumor_patches_from_tumor_images ")
+    # print("\n\n\n generate_tumor_patches_from_tumor_images ")
     #generate_tumor_patches_from_tumor_images()
-    single_threaded_generate_tumor_patches_from_tumor_images()
+    #single_threaded_generate_tumor_patches_from_tumor_images()
+
     print(" Patches have been created once.")
