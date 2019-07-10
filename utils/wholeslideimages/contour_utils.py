@@ -329,6 +329,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
 
                 ## Normalizing the patch (vgg normalization)
                 ## Changing from RGBA to RGB
+                print("performing input normalization")
                 patch_to_be_saved.convert("RGB")
 
                 # Changing from image object to numpy so that normalization can be performed
