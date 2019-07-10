@@ -343,6 +343,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                     is_training=True)
                 preprocessed_image = image_preprocessing_fn(np_im, np_im.shape[0], np_im.shape[1])
                 np_preprocessed_image = tf.Session().run(preprocessed_image.eval())
+                print("numpy preprocesed image shape: ", np_preprocessed_image.shape)
 
                 # Converting numpy back to Image object
                 patch_to_be_saved = Image.fromarray(np_preprocessed_image)
