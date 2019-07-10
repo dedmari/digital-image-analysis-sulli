@@ -158,20 +158,20 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
             #####################################
             # Select the preprocessing function #
             #####################################
-            preprocessing_name = 'resnet_v1_50'
-            image_preprocessing_fn = preprocessing_factory.get_preprocessing(
-              preprocessing_name,
-              is_training=True)
-            preprocessed_image = image_preprocessing_fn(image_data, height, width)
+            # preprocessing_name = 'resnet_v1_50'
+            # image_preprocessing_fn = preprocessing_factory.get_preprocessing(
+            #  preprocessing_name,
+            #  is_training=True)
+            # preprocessed_image = image_preprocessing_fn(image_data, height, width)
 
 
             class_name = os.path.basename(os.path.dirname(filenames[i]))
-            print("class_name: ", class_name)
+            # print("class_name: ", class_name)
             class_id = class_names_to_ids[class_name]
-            print("class_id: ", class_id)
+            # print("class_id: ", class_id)
 
             example = dataset_utils.image_to_tfexample(
-                preprocessed_image, b'jpg', height, width, class_id)
+                image_data, b'jpg', height, width, class_id)
             tfrecord_writer.write(example.SerializeToString())
 
   sys.stdout.write('\n')

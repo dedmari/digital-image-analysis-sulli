@@ -329,24 +329,26 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
 
                 ## Normalizing the patch (vgg normalization)
                 ## Changing from RGBA to RGB
-                print("performing input normalization")
-                patch_to_be_saved.convert("RGB")
+                # print("performing input normalization")
+                # patch_to_be_saved.convert("RGB")
 
                 # Changing from image object to numpy so that normalization can be performed
-                np_im = np.array(patch_to_be_saved)
+                # np_im = np.array(patch_to_be_saved)
                 #####################################
                 # Select the preprocessing function #
                 #####################################
-                preprocessing_name = 'resnet_v1_50'
-                image_preprocessing_fn = preprocessing_factory.get_preprocessing(
-                    preprocessing_name,
-                    is_training=True)
-                preprocessed_image = image_preprocessing_fn(np_im, np_im.shape[0], np_im.shape[1])
-                np_preprocessed_image = tf.Session().run(preprocessed_image.eval())
-                print("numpy preprocesed image shape: ", np_preprocessed_image.shape)
+                #preprocessing_name = 'resnet_v1_50'
+                #image_preprocessing_fn = preprocessing_factory.get_preprocessing(
+                #    preprocessing_name,
+                #    is_training=True)
+                #preprocessed_image = image_preprocessing_fn(np_im, np_im.shape[0], np_im.shape[1])
+                #np_preprocessed_image = tf.Session().run(preprocessed_image.eval())
+
+                # normalized_image = np_im / 255.0 - 0.5
+                # print("numpy preprocesed image shape: ", normalized_image.shape)
 
                 # Converting numpy back to Image object
-                patch_to_be_saved = Image.fromarray(np_preprocessed_image)
+                # patch_to_be_saved = Image.fromarray(normalized_image)
 
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
