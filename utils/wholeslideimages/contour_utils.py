@@ -22,6 +22,8 @@ import properties.wsi_props as wsi_props
 import properties.disk_storage as disk_storage_props
 import properties.wsi_props as wsi_props
 import patch_utils
+import tensorflow as tf
+from slim.preprocessing import preprocessing_factory
 
 
 # To find external contours, it is necessary to convert
@@ -324,6 +326,26 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                 tumor_id = wsi_path.split('_')[-1].split('.')[0]
                 filepath = dir_for_saving_tumor_patches+str(wsi_name)+"_"+str(samples_accepted)+".PNG"
                 print("saving patches at: "+filepath)
+
+                ## Normalizing the patch (vgg normalization)
+                ## Changing from RGBA to RGB
+                patch_to_be_saved.convert("RGB")
+
+                # Changing from image object to numpy so that normalization can be performed
+                np_im = np.array(patch_to_be_saved)
+                #####################################
+                # Select the preprocessing function #
+                #####################################
+                preprocessing_name = 'resnet_v1_50'
+                image_preprocessing_fn = preprocessing_factory.get_preprocessing(
+                    preprocessing_name,
+                    is_training=True)
+                preprocessed_image = image_preprocessing_fn(np_im, np_im.shape[0], np_im.shape[1])
+                sess = tf.InteractiveSession()
+                np_preprocessed_image = preprocessed_image.eval()
+
+                # Converting numpy back to Image object
+                patch_to_be_saved = Image.fromarray(np_preprocessed_image)
 
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
