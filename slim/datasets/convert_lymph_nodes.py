@@ -36,6 +36,7 @@ import random
 import sys
 import platform
 import tensorflow as tf
+from slim.preprocessing import preprocessing_factory
 
 from slim.datasets import dataset_utils
 from properties import disk_storage as disk_storage_props
@@ -154,13 +155,23 @@ def _convert_dataset(split_name, filenames, class_names_to_ids, dataset_dir):
             height, width = image_reader.read_image_dims(sess, image_data)
             #print("\n\nImage dimensions, height : {0} , width : {1}".format(height, width))
 
+            #####################################
+            # Select the preprocessing function #
+            #####################################
+            preprocessing_name = 'resnet_v1_50'
+            image_preprocessing_fn = preprocessing_factory.get_preprocessing(
+              preprocessing_name,
+              is_training=True)
+            preprocessed_image = image_preprocessing_fn(image_data, height, width)
+
+
             class_name = os.path.basename(os.path.dirname(filenames[i]))
-            #print("class_name ",class_name)
+            print("class_name: ", class_name)
             class_id = class_names_to_ids[class_name]
-            #print("class_id ", class_id)
+            print("class_id: ", class_id)
 
             example = dataset_utils.image_to_tfexample(
-                image_data, b'jpg', height, width, class_id)
+                preprocessed_image, b'jpg', height, width, class_id)
             tfrecord_writer.write(example.SerializeToString())
 
   sys.stdout.write('\n')
