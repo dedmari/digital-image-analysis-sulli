@@ -24,9 +24,9 @@ CAMELYON_DIR = CAMELYON_DIR_LIST[user]
 RAW_DATA_DIR = CAMELYON_DIR + "training/"
 RAW_TUMOR_DATA_DIR = RAW_DATA_DIR + "tumor/"
 RAW_NORMAL_DATA_DIR = RAW_DATA_DIR + "normal/"
-# RAW_TUMOR_MASK_DIR = CAMELYON_DIR + "Ground_Truth_Extracted/Mask/"
-# Using for testing purpose only. TODO: change back to Mask directory after testing is done
-RAW_TUMOR_MASK_DIR = CAMELYON_DIR + "Ground_Truth_Extracted/Test_Mask/"
+RAW_TUMOR_MASK_DIR = CAMELYON_DIR + "Ground_Truth_Extracted/Mask/"
+# Using for testing purpose only.
+# RAW_TUMOR_MASK_DIR = CAMELYON_DIR + "Ground_Truth_Extracted/Test_Mask/"
 
 PREPROCESSING_DATA_DIR = CAMELYON_DIR + "PreProcessing/"
 PATCHES_DATA_DIR = PREPROCESSING_DATA_DIR + "Patches/"
