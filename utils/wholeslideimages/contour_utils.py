@@ -350,6 +350,8 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                 # Converting numpy back to Image object
                 # patch_to_be_saved = Image.fromarray(normalized_image)
 
+                # Converting from RBGA to RBG so that image is saved as in JPEG format rather than PNG
+                patch_to_be_saved = patch_to_be_saved.convert("RGB")
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
                 samples_accepted += 1
