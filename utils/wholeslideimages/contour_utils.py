@@ -382,6 +382,8 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
 
                 normal_id = wsi_path.split('_')[-1].split('.')[0]
                 filepath = dir_for_saving_non_tumor_patches + str(wsi_name) + "_" + str(samples_accepted) + ".JPEG"
+                # Converting from RBGA to RBG so that image is saved as in JPEG format rather than PNG
+                patch_to_be_saved = patch_to_be_saved.convert("RGB")
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
                 samples_accepted += 1
