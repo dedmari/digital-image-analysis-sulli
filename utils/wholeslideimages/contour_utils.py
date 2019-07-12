@@ -324,7 +324,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                     os.makedirs(dir_for_saving_tumor_patches)
 
                 tumor_id = wsi_path.split('_')[-1].split('.')[0]
-                filepath = dir_for_saving_tumor_patches+str(wsi_name)+"_"+str(samples_accepted)+".PNG"
+                filepath = dir_for_saving_tumor_patches+str(wsi_name)+"_"+str(samples_accepted)+".JPEG"
                 print("saving patches at: "+filepath)
 
                 ## Normalizing the patch (vgg normalization)
@@ -379,7 +379,7 @@ def get_and_save_patch_samples_from_mask_and_wsi_image(mask_image,          # rg
                     os.makedirs(dir_for_saving_non_tumor_patches)
 
                 normal_id = wsi_path.split('_')[-1].split('.')[0]
-                filepath = dir_for_saving_non_tumor_patches + str(wsi_name) + "_" + str(samples_accepted) + ".PNG"
+                filepath = dir_for_saving_non_tumor_patches + str(wsi_name) + "_" + str(samples_accepted) + ".JPEG"
                 patch_to_be_saved.save(fp=filepath)
                 patch_to_be_saved.close()
                 samples_accepted += 1
