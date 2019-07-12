@@ -189,15 +189,15 @@ def single_threaded_generate_tumor_patches_from_tumor_images(slide_num=1):
 
 
 if __name__ == '__main__':
-    #print("\n\n\n generate_normal_patches_from_normal_images ")
-    #generate_normal_patches_from_normal_images()
+    print("\n\n\n generate_normal_patches_from_normal_images ")
+    generate_normal_patches_from_normal_images()
 
     # print("\n\n\n generate_normal_patches_from_tumor_images ")
     # generate_normal_patches_from_tumor_images()
     #
     print("\n\n\n generate_tumor_patches_from_tumor_images ")
-    #generate_tumor_patches_from_tumor_images()
-    for slide_num in range(1, 50):
-        single_threaded_generate_tumor_patches_from_tumor_images(slide_num=slide_num)
+    generate_tumor_patches_from_tumor_images()
+    #for slide_num in range(1, 50):
+    #    single_threaded_generate_tumor_patches_from_tumor_images(slide_num=slide_num)
 
     print(" Patches have been created once.")
